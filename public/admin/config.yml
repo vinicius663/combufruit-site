@@ -1,0 +1,65 @@
+# Painel de conteúdo do blog Combu Fruit (Sveltia CMS)
+#
+# ATENÇÃO — antes de ativar em produção:
+# 1. Trocar "repo" abaixo pelo repositório real (usuario/nome-do-repo no GitHub);
+# 2. Configurar o login GitHub (OAuth) — passos em docs/PROXIMOS-PASSOS.md.
+# Para testar localmente: npm run dev e abrir http://localhost:4321/admin/
+# (o Sveltia oferece "Work with Local Repository" ao rodar em localhost).
+
+backend:
+  name: github
+  repo: SUBSTITUIR-USUARIO/combufruit-site
+  branch: main
+
+# permite teste local sem GitHub (proxy do CMS)
+local_backend: true
+
+site_url: https://www.combufruit.com.br
+locale: pt
+
+# onde as imagens enviadas pelo painel são gravadas / como aparecem na URL
+media_folder: "public/assets/blog"
+public_folder: "/assets/blog"
+
+collections:
+  - name: posts
+    label: "Posts do blog"
+    label_singular: "Post"
+    folder: "src/content/posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{titulo}} — {{categoria}}"
+    sortable_fields: [data, titulo]
+    editor:
+      preview: false
+    fields:
+      - { label: "Título", name: "titulo", widget: "string", hint: "O título do artigo, como aparece na página." }
+      - { label: "Descrição (SEO)", name: "descricao", widget: "text", hint: "1 a 2 frases. Aparece no Google e nos cards do blog. Ideal: até 155 caracteres." }
+      - label: "Categoria"
+        name: "categoria"
+        widget: "select"
+        options: ["Qualidade & Técnica", "Mercado do Açaí", "Exportação", "Amazônia & Origem"]
+      - { label: "Data de publicação", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Imagem de destaque", name: "imagem", widget: "image", hint: "Foto horizontal, de preferência 1600 px ou mais de largura." }
+      - { label: "Descrição da imagem (acessibilidade)", name: "imagemAlt", widget: "string", hint: "Descreva a foto em uma frase — é lido por leitores de tela e pelo Google." }
+      - { label: "Legenda da imagem", name: "imagemLegenda", widget: "string", required: false, hint: "Opcional. Aparece abaixo da foto de destaque." }
+      - { label: "Título para o Google (opcional)", name: "tituloSeo", widget: "string", required: false, hint: "Se vazio, usa o título do artigo + '— Blog Combu Fruit'." }
+      - { label: "Tempo de leitura (opcional)", name: "tempoLeitura", widget: "string", required: false, hint: "Ex.: 6 min de leitura. Se vazio, é calculado sozinho." }
+      - label: "Resumo (caixa no topo do artigo)"
+        name: "resumo"
+        widget: "list"
+        required: false
+        allow_add: true
+        field: { label: "Item do resumo", name: "item", widget: "string" }
+        hint: "3 a 4 frases curtas. Use **palavra** para negrito."
+      - label: "Perguntas frequentes (para o Google)"
+        name: "faq"
+        widget: "list"
+        required: false
+        hint: "Se o artigo tiver seção de perguntas frequentes, repita aqui as mesmas perguntas e respostas — vira dado estruturado para o Google."
+        fields:
+          - { label: "Pergunta", name: "pergunta", widget: "string" }
+          - { label: "Resposta", name: "resposta", widget: "text" }
+      - { label: "Rascunho (não publica)", name: "rascunho", widget: "boolean", default: false, hint: "Ligado = o post NÃO aparece no site, mesmo salvo." }
+      - { label: "Conteúdo", name: "body", widget: "markdown", hint: "O artigo. Use Título 2 para as seções (viram o índice lateral) e Título 3 para subseções. Digite [[cta]] numa linha própria para inserir o box de 'Pedir cotação' no meio do texto." }

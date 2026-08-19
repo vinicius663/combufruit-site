@@ -1,0 +1,20 @@
+---
+// Card de post publicado (grade do blog e das categorias)
+import { dataLonga, tempoLeitura, urlPost } from '../lib/site.mjs';
+interface Props {
+  post: any;
+  reveal?: number;
+}
+const { post, reveal = 0 } = Astro.props;
+const d = post.data;
+const leitura = d.tempoLeitura ?? tempoLeitura(post.body ?? '');
+---
+<a class="card card--hover card-post" href={urlPost(post.id)} data-reveal={String(reveal)}>
+  <div class="card-post__img" style={`background-image:url('${d.imagem}')`} role="img" aria-label={d.imagemAlt}></div>
+  <div class="card-post__corpo">
+    <span class="tag-categoria">{d.categoria}</span>
+    <h3>{d.titulo}</h3>
+    <p>{d.descricao}</p>
+    <p class="post-meta">{dataLonga(d.data)} · {leitura}</p>
+  </div>
+</a>

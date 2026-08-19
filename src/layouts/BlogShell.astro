@@ -1,0 +1,157 @@
+---
+// Casca comum das páginas do blog: head (Adopt + GTM + SEO), navegação,
+// rodapé e scripts (main.js + RD Station). Replica byte a byte o markup do
+// site estático — qualquer mudança aqui vale para todos os posts de uma vez.
+interface Props {
+  titulo: string;
+  descricao: string;
+  canonical: string; // caminho absoluto a partir da raiz, ex.: /blog/meu-post.html
+  ogTitulo?: string;
+  ogDescricao?: string;
+  ogTipo?: string;
+  ogImagem?: string;
+  autorMeta?: string;
+  jsonld?: object[];
+}
+import { DOMINIO } from '../lib/site.mjs';
+
+const {
+  titulo,
+  descricao,
+  canonical,
+  ogTitulo = Astro.props.titulo,
+  ogDescricao = Astro.props.descricao,
+  ogTipo = 'website',
+  ogImagem,
+  autorMeta = 'Combu Fruit',
+  jsonld = [],
+} = Astro.props;
+const urlCanonica = `${DOMINIO}${canonical}`;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="adopt-website-id" content="d95a31ea-2d92-4902-ab08-c533f6a1120f" />
+<script is:inline src="//tag.goadopt.io/injector.js?website_code=d95a31ea-2d92-4902-ab08-c533f6a1120f" class="adopt-injector"></script>
+<!-- Google Tag Manager -->
+<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PFCM5W4W');</script>
+<!-- End Google Tag Manager -->
+<title>{titulo}</title>
+<meta name="description" content={descricao}>
+<meta property="og:title" content={ogTitulo}>
+<meta property="og:description" content={ogDescricao}>
+<meta property="og:type" content={ogTipo}>
+<meta property="og:locale" content="pt_BR">
+{ogImagem && <meta property="og:image" content={`${DOMINIO}${ogImagem}`} />}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/BlockBerthold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="canonical" href={urlCanonica}>
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#37196C">
+<meta name="author" content={autorMeta}>
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/manifest.webmanifest">
+{jsonld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFCM5W4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ===== Frutos de açaí em parallax (camada ambiente) ===== -->
+<div class="frutos" aria-hidden="true">
+  <span class="f2" data-depth="0.30"><img src="/assets/acai-02.webp" alt=""></span>
+  <span class="f3" data-depth="0.10"><img src="/assets/acai-01.webp" alt=""></span>
+  <span class="f5" data-depth="0.24"><img src="/assets/acai-01.webp" alt=""></span>
+</div>
+
+<!-- ===== Navegação ===== -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/index.html"><img src="/assets/logo-branca.webp" alt="Combu Fruit"></a>
+    <nav class="nav__links" aria-label="Navegação principal">
+      <a href="/index.html">Início</a>
+      <a href="/a-combu-fruit.html">A Combu Fruit</a>
+      <a href="/produtos/">Produtos</a>
+      <a href="/solucoes.html">Soluções</a>
+      <a href="/blog/" class="ativo" aria-current="page">Conteúdo</a>
+      <a href="/contato.html">Contato</a>
+    </nav>
+    <div class="seletor-idioma" aria-label="Idioma / Language">
+      <a href="/" class="ativo" aria-current="true" lang="pt-BR">PT</a>
+      <a href="/en/" lang="en" hreflang="en">EN</a>
+      <a href="/es/" lang="es" hreflang="es">ES</a>
+    </div>
+    <a href="/contato.html" class="nav__cta">Pedir cotação</a>
+    <button class="nav__burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span></button>
+  </div>
+</header>
+<div class="nav__overlay" id="menu-mobile">
+  <a href="/index.html">Início</a>
+  <a href="/a-combu-fruit.html">A Combu Fruit</a>
+  <a href="/produtos/">Produtos</a>
+  <a href="/solucoes.html">Soluções</a>
+  <a href="/blog/" class="ativo">Conteúdo</a>
+  <a href="/contato.html">Contato</a>
+  <div class="seletor-idioma" aria-label="Idioma / Language">
+      <a href="/" class="ativo" aria-current="true" lang="pt-BR">PT</a>
+      <a href="/en/" lang="en" hreflang="en">EN</a>
+      <a href="/es/" lang="es" hreflang="es">ES</a>
+    </div>
+  <a href="/contato.html" class="nav__overlay-cta">Pedir cotação</a>
+</div>
+
+<a href="/contato.html" class="cta-flutuante">Pedir cotação</a>
+
+<main>
+<slot />
+</main>
+
+<!-- ===== Rodapé ===== -->
+<footer class="rodape">
+  <div class="rodape__inner">
+    <div class="rodape__marca">
+      <img src="/assets/logo-branca.webp" alt="Combu Fruit">
+      <p>Indústria de açaí e polpas de frutas do Pará. Grupo CDS, desde 2006.</p>
+    </div>
+    <div class="rodape__colunas">
+      <nav aria-label="Páginas">
+        <p class="rodape__titulo">Páginas</p>
+        <a href="/index.html">Início</a>
+        <a href="/a-combu-fruit.html">A Combu Fruit</a>
+        <a href="/produtos/">Produtos</a>
+        <a href="/solucoes.html">Soluções</a>
+        <a href="/blog/">Conteúdo</a>
+        <a href="/contato.html">Contato</a>
+      </nav>
+      <div>
+        <p class="rodape__titulo" style="margin-bottom:12px">Comercial</p>
+        <p class="rodape__contato">comercial@combufruit.com.br</p>
+      </div>
+      <a class="rodape__insta" href="https://www.instagram.com/combufruit/" target="_blank" rel="noopener" aria-label="Instagram da Combu Fruit">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"></circle></svg>
+      </a>
+    </div>
+  </div>
+  <div class="rodape__base">
+    <p>© 2026 Combu Fruit · Castanhal, Pará, Brasil</p>
+  </div>
+</footer>
+
+<script is:inline src="/js/main.js"></script>
+<script is:inline type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/143eebc6-39d5-4b8c-866d-12b4772cce85-loader.js" ></script>
+</body>
+</html>

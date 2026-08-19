@@ -1,0 +1,86 @@
+---
+// Página de categoria: gerada para toda categoria que tem ao menos um post.
+// Mostra os posts da categoria + as pautas "Em breve" dela.
+import { getCollection } from 'astro:content';
+import BlogShell from '../../../layouts/BlogShell.astro';
+import CardPost from '../../../components/CardPost.astro';
+import CardBreve from '../../../components/CardBreve.astro';
+import {
+  DOMINIO, CATEGORIAS, EM_BREVE, urlCategoria,
+} from '../../../lib/site.mjs';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.rascunho);
+  const comPost = CATEGORIAS.filter((c) => posts.some((p) => p.data.categoria === c.nome));
+  return comPost.map((c) => ({ params: { categoria: c.slug }, props: { cat: c } }));
+}
+
+const { cat } = Astro.props;
+const todos = (await getCollection('posts', ({ data }) => !data.rascunho))
+  .sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+const posts = todos.filter((p) => p.data.categoria === cat.nome);
+const categoriasComPost = new Set(todos.map((p) => p.data.categoria));
+const breves = EM_BREVE.filter((b) => b.categoria === cat.nome);
+const caminho = urlCategoria(cat.slug);
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${cat.nome} — Blog Combu Fruit`,
+    url: `${DOMINIO}${caminho}`,
+    inLanguage: 'pt-BR',
+    isPartOf: { '@type': 'Blog', name: 'Blog Combu Fruit', url: `${DOMINIO}/blog/` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Blog', item: `${DOMINIO}/blog/` },
+      { '@type': 'ListItem', position: 2, name: cat.nome },
+    ],
+  },
+];
+---
+<BlogShell
+  titulo={`${cat.nome} — Blog Combu Fruit`}
+  descricao={cat.descricao}
+  canonical={caminho}
+  ogTitulo={`${cat.nome} — Blog Combu Fruit`}
+  ogDescricao={cat.descricao}
+  jsonld={jsonld}
+>
+
+<!-- ===== Cabeçalho da categoria ===== -->
+<section class="blog-hero">
+  <div class="blog-hero__inner" data-reveal="0">
+    <p class="breadcrumb" style="color:rgba(255,255,255,.6)"><a href="/blog/" style="color:rgba(255,255,255,.6)">Blog</a> › {cat.nome}</p>
+    <h1>{cat.nome}</h1>
+    <p>{cat.descricao}</p>
+    <nav class="chips-categorias" aria-label="Categorias">
+      <a class="chip-categoria" href="/blog/">Todos</a>
+      {CATEGORIAS.map((c) =>
+        c.slug === cat.slug
+          ? <a class="chip-categoria ativa" href={urlCategoria(c.slug)} aria-current="page">{c.nome}</a>
+          : categoriasComPost.has(c.nome)
+            ? <a class="chip-categoria" href={urlCategoria(c.slug)}>{c.nome}</a>
+            : <span class="chip-categoria" style="opacity:.55;pointer-events:none">{c.nome}</span>
+      )}
+    </nav>
+  </div>
+</section>
+
+<!-- onda: roxo → creme -->
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" style="background:#37196C"><path fill="#F7F4EE" d="M0,50 C240,95 480,5 760,35 C1040,65 1240,20 1440,45 L1440,90 L0,90 Z"></path></svg>
+
+<!-- ===== Lista de posts da categoria ===== -->
+<section class="blog-lista">
+  <div class="blog-lista__inner">
+    <div class="grade-posts">
+      {posts.map((p, i) => <CardPost post={p} reveal={(i % 3) * 100} />)}
+      {breves.map((b, i) => <CardBreve item={b} reveal={((posts.length + i) % 3) * 100} />)}
+    </div>
+  </div>
+</section>
+
+</BlogShell>

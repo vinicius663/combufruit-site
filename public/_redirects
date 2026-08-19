@@ -1,0 +1,5 @@
+# Páginas nacionais renomeadas (a rota /produtos/ passou a ser a tela de escolha).
+# Mantém funcionando qualquer link antigo já compartilhado.
+/produtos.html      /produtos-nacional.html        301
+/en/products.html   /en/products-domestic.html     301
+/es/productos.html  /es/productos-nacional.html    301

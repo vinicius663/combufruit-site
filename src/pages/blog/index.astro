@@ -1,0 +1,90 @@
+---
+// Hub do blog: destaque (post mais recente) + grade com os demais posts e
+// os cards "Em breve" das categorias que ainda não têm post publicado.
+import { getCollection } from 'astro:content';
+import BlogShell from '../../layouts/BlogShell.astro';
+import CardPost from '../../components/CardPost.astro';
+import CardBreve from '../../components/CardBreve.astro';
+import {
+  DOMINIO, CATEGORIAS, EM_BREVE,
+  dataLonga, tempoLeitura, urlPost, urlCategoria,
+} from '../../lib/site.mjs';
+
+const posts = (await getCollection('posts', ({ data }) => !data.rascunho))
+  .sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+
+const destaque = posts[0];
+const demais = posts.slice(1);
+const categoriasComPost = new Set(posts.map((p) => p.data.categoria));
+const breves = EM_BREVE.filter((b) => !categoriasComPost.has(b.categoria));
+
+const jsonld = [{
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog Combu Fruit',
+  url: `${DOMINIO}/blog/`,
+  inLanguage: 'pt-BR',
+  description: 'Mercado do açaí, qualidade técnica, exportação e a vida na Ilha do Combu.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Combu Fruit',
+    logo: { '@type': 'ImageObject', url: `${DOMINIO}/assets/icons/icon-512.png` },
+  },
+}];
+---
+<BlogShell
+  titulo="Blog — Combu Fruit"
+  descricao="Mercado do açaí, qualidade técnica, exportação e a vida na Ilha do Combu — conteúdo da equipe Combu Fruit para quem compra polpa em escala."
+  canonical="/blog/"
+  ogTitulo="Blog — Combu Fruit"
+  ogDescricao="Mercado do açaí, qualidade técnica, exportação e a vida na Ilha do Combu, pela equipe Combu Fruit."
+  jsonld={jsonld}
+>
+
+<!-- ===== Cabeçalho do blog ===== -->
+<section class="blog-hero">
+  <div class="blog-hero__inner" data-reveal="0">
+    <h1>Conteúdo Combu Fruit</h1>
+    <p>Mercado do açaí, qualidade técnica, exportação e a vida na ilha — para quem compra polpa em escala.</p>
+    <nav class="seletor-conteudo" aria-label="Tipo de conteúdo">
+      <a href="/blog/" class="ativo" aria-current="page">Blog</a>
+      <a href="/materiais/">Materiais</a>
+    </nav>
+    <nav class="chips-categorias" aria-label="Categorias">
+      <a class="chip-categoria ativa" href="/blog/" aria-current="page">Todos</a>
+      {CATEGORIAS.map((c) =>
+        categoriasComPost.has(c.nome)
+          ? <a class="chip-categoria" href={urlCategoria(c.slug)}>{c.nome}</a>
+          : <span class="chip-categoria" style="opacity:.55;pointer-events:none">{c.nome}</span>
+      )}
+    </nav>
+  </div>
+</section>
+
+<!-- onda: roxo → creme -->
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" style="background:#37196C"><path fill="#F7F4EE" d="M0,50 C240,95 480,5 760,35 C1040,65 1240,20 1440,45 L1440,90 L0,90 Z"></path></svg>
+
+<!-- ===== Lista de posts ===== -->
+<section class="blog-lista">
+  <div class="blog-lista__inner">
+
+    {destaque && (
+      <a class="card card--hover post-destaque" href={urlPost(destaque.id)} data-reveal="0">
+        <div class="post-destaque__img" style={`background-image:url('${destaque.data.imagem}')`} role="img" aria-label={destaque.data.imagemAlt}></div>
+        <div class="post-destaque__corpo">
+          <span class="tag-categoria">{destaque.data.categoria}</span>
+          <h2>{destaque.data.titulo}</h2>
+          <p>{destaque.data.descricao}</p>
+          <p class="post-meta">{dataLonga(destaque.data.data)} · {destaque.data.tempoLeitura ?? tempoLeitura(destaque.body ?? '')}</p>
+        </div>
+      </a>
+    )}
+
+    <div class="grade-posts">
+      {demais.map((p, i) => <CardPost post={p} reveal={(i % 3) * 100} />)}
+      {breves.map((b, i) => <CardBreve item={b} reveal={((demais.length + i) % 3) * 100} />)}
+    </div>
+  </div>
+</section>
+
+</BlogShell>

@@ -1,0 +1,166 @@
+---
+// Template do post: um arquivo .md em src/content/posts vira esta página,
+// já com SEO (canonical, OG, JSON-LD BlogPosting/Breadcrumb/FAQ), TOC gerado
+// dos títulos H2, botões de compartilhar e cards de "continue lendo".
+import { getCollection, render } from 'astro:content';
+import BlogShell from '../../layouts/BlogShell.astro';
+import CardPost from '../../components/CardPost.astro';
+import CardBreve from '../../components/CardBreve.astro';
+import {
+  DOMINIO, EM_BREVE, categoriaPorNome,
+  dataLonga, dataIso, tempoLeitura, inlineResumo, urlPost, urlCategoria,
+} from '../../lib/site.mjs';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.rascunho);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const d = post.data;
+const { Content, headings } = await render(post);
+
+const cat = categoriaPorNome(d.categoria);
+const caminho = urlPost(post.id);
+const urlAbsoluta = `${DOMINIO}${caminho}`;
+const urlCodificada = encodeURIComponent(urlAbsoluta);
+const leitura = d.tempoLeitura ?? tempoLeitura(post.body ?? '');
+const toc = headings.filter((h) => h.depth === 2);
+
+// Continue lendo: outros posts publicados + pautas "Em breve" de categorias
+// sem post, até completar 3 cards.
+const outros = (await getCollection('posts', ({ data, id }) => !data.rascunho && id !== post.id))
+  .sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+const categoriasComPost = new Set(
+  (await getCollection('posts', ({ data }) => !data.rascunho)).map((p) => p.data.categoria)
+);
+const brevesDisponiveis = EM_BREVE.filter((b) => !categoriasComPost.has(b.categoria));
+const relacionadosPosts = outros.slice(0, 3);
+const relacionadosBreves = brevesDisponiveis.slice(0, Math.max(0, 3 - relacionadosPosts.length));
+
+const jsonld: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: d.titulo,
+    description: d.descricao,
+    image: `${DOMINIO}${d.imagem}`,
+    datePublished: dataIso(d.data),
+    dateModified: dataIso(d.data),
+    inLanguage: 'pt-BR',
+    mainEntityOfPage: urlAbsoluta,
+    author: { '@type': 'Organization', name: 'Equipe Combu Fruit', url: `${DOMINIO}/` },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Combu Fruit',
+      logo: { '@type': 'ImageObject', url: `${DOMINIO}/assets/icons/icon-512.png` },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Blog', item: `${DOMINIO}/blog/` },
+      { '@type': 'ListItem', position: 2, name: d.categoria, item: `${DOMINIO}${urlCategoria(cat.slug)}` },
+      { '@type': 'ListItem', position: 3, name: d.titulo },
+    ],
+  },
+];
+if (d.faq?.length) {
+  jsonld.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.pergunta,
+      acceptedAnswer: { '@type': 'Answer', text: f.resposta },
+    })),
+  });
+}
+---
+<BlogShell
+  titulo={d.tituloSeo ?? `${d.titulo} — Blog Combu Fruit`}
+  descricao={d.descricao}
+  canonical={caminho}
+  ogTitulo={d.titulo}
+  ogDescricao={d.descricao}
+  ogTipo="article"
+  ogImagem={d.imagem}
+  autorMeta="Equipe Combu Fruit"
+  jsonld={jsonld}
+>
+
+<article class="artigo">
+  <!-- Cabeçalho do artigo -->
+  <div class="artigo__cabecalho">
+    <p class="breadcrumb"><a href="/blog/">Blog</a> › <a href={urlCategoria(cat.slug)}>{d.categoria}</a></p>
+    <span class="tag-categoria">{d.categoria}</span>
+    <h1>{d.titulo}</h1>
+    <div class="artigo__byline">
+      <span class="avatar-autor" aria-hidden="true">CF</span>
+      <div>
+        <p class="quem">Equipe Combu Fruit</p>
+        <p class="quando">{dataLonga(d.data)} · {leitura}</p>
+      </div>
+      <div class="artigo__share">
+        <a href={`https://wa.me/?text=${urlCodificada}`} target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"></path></svg></a>
+        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${urlCodificada}`} target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.31h4.52V23H.24V8.31zM8.34 8.31h4.33v2h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.1c0-1.7-.03-3.88-2.37-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.31z"></path></svg></a>
+        <button type="button" data-copiar-link aria-label="Copiar link"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero do artigo -->
+  <figure class="artigo__hero">
+    <img src={d.imagem} alt={d.imagemAlt} fetchpriority="high">
+    {d.imagemLegenda && <figcaption>{d.imagemLegenda}</figcaption>}
+  </figure>
+
+  <div class="artigo__wrap">
+    <div class="artigo__corpo">
+      {d.resumo?.length ? (
+        <div class="box-resumo">
+          <p class="titulo">Resumo</p>
+          <ul>
+            {d.resumo.map((item) => <li set:html={inlineResumo(item)} />)}
+          </ul>
+        </div>
+      ) : null}
+
+      <Content />
+
+      <div class="autor-box">
+        <span class="avatar-autor" aria-hidden="true">CF</span>
+        <div>
+          <p class="quem">Equipe Combu Fruit</p>
+          <p>Indústria de açaí e polpas de frutas do Pará, do Grupo CDS (desde 2006). Fornecemos polpa de açaí com padrão de qualidade e certificações internacionais para indústrias, distribuidores, food service e importadores.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Índice -->
+    {toc.length > 0 && (
+      <aside class="toc" aria-label="Neste artigo">
+        <p class="titulo">Neste artigo</p>
+        <ol>
+          {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+        </ol>
+      </aside>
+    )}
+  </div>
+</article>
+
+<!-- ===== Relacionados ===== -->
+{(relacionadosPosts.length + relacionadosBreves.length) > 0 && (
+  <section class="relacionados">
+    <div class="relacionados__inner">
+      <h2>Continue lendo</h2>
+      <div class="grade-posts">
+        {relacionadosPosts.map((p) => <CardPost post={p} />)}
+        {relacionadosBreves.map((b) => <CardBreve item={b} />)}
+      </div>
+    </div>
+  </section>
+)}
+
+</BlogShell>

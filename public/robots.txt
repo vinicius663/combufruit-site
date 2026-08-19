@@ -1,0 +1,26 @@
+# Combu Fruit — robots.txt
+# Ajuste o domínio do Sitemap abaixo para o domínio de produção real.
+
+User-agent: *
+Allow: /
+
+# Crawlers de IA liberados (visibilidade em ChatGPT, Perplexity, Gemini, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.combufruit.com.br/sitemap.xml

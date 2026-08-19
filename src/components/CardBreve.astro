@@ -1,0 +1,21 @@
+---
+// Card "Em breve" — pauta anunciada (dados em src/lib/site.mjs, EM_BREVE)
+interface Props {
+  item: any;
+  reveal?: number;
+  meta?: string; // texto do rodapé do card (por padrão, a categoria)
+}
+const { item, reveal = 0, meta = item.categoria } = Astro.props;
+const estilo = item.imgContain
+  ? `background-image:url('${item.img}');background-size:contain;background-repeat:no-repeat;background-color:#F7F4EE`
+  : `background-image:url('${item.img}')`;
+---
+<div class="card card-post card-post--breve" data-reveal={String(reveal)}>
+  <div class="card-post__img" style={estilo} role="img" aria-label={item.aria}></div>
+  <div class="card-post__corpo">
+    <span class="tag-breve">Em breve</span>
+    <h3>{item.titulo}</h3>
+    <p>{item.texto}</p>
+    <p class="post-meta">{meta}</p>
+  </div>
+</div>
