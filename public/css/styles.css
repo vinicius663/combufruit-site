@@ -750,6 +750,7 @@ h2.display { font-size: clamp(32px, 3.4vw, 52px); line-height: 1.06; margin: 0 0
 .carrossel__rodape p { margin: 0; color: var(--muted); font-size: 13px; }
 .link-ficha { color: var(--laranja); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s ease; }
 .link-ficha:hover { color: var(--laranja-hover); text-decoration: underline; }
+.ficha-consulta { margin: 22px 0 0; font-size: 14px; font-weight: 600; color: var(--corpo-claro); }
 
 /* ---------- Certificações ---------- */
 .certificacoes { background: var(--creme); padding: 64px var(--pad-x) 96px; }
