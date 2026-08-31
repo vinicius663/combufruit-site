@@ -550,6 +550,15 @@ h2.display { font-size: clamp(32px, 3.4vw, 52px); line-height: 1.06; margin: 0 0
   background: rgba(255, 255, 255, .35);
   cursor: pointer;
   transition: background .3s ease, width .3s ease;
+  /* área de toque de 34px sem mudar o tamanho visual do ponto */
+  position: relative;
+}
+.jornada__dot::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 34px; height: 34px;
 }
 .jornada__dot.ativa { background: var(--laranja); width: 26px; }
 
@@ -748,7 +757,7 @@ h2.display { font-size: clamp(32px, 3.4vw, 52px); line-height: 1.06; margin: 0 0
 .chip--escuro { border-color: rgba(255, 255, 255, .25); color: rgba(255, 255, 255, .85); padding: 9px 20px; font-size: 13.5px; }
 .carrossel__rodape { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
 .carrossel__rodape p { margin: 0; color: var(--muted); font-size: 13px; }
-.link-ficha { color: var(--laranja); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s ease; }
+.link-ficha { color: var(--laranja); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s ease; display: inline-block; padding: 8px 0; }
 .link-ficha:hover { color: var(--laranja-hover); text-decoration: underline; }
 .ficha-consulta { margin: 22px 0 0; font-size: 14px; font-weight: 600; color: var(--corpo-claro); }
 
@@ -1721,6 +1730,9 @@ a.canal:hover { color: var(--laranja); }
   gap: 64px;
   align-items: start;
 }
+/* deixa o corpo encolher: sem isso a tabela empurra a coluna e a página
+   ganha rolagem horizontal no celular */
+.artigo__corpo { min-width: 0; }
 .artigo__corpo { max-width: 720px; }
 .artigo__corpo > p { margin: 0 0 22px; color: #3A3348; font-size: 17.5px; line-height: 1.75; }
 .artigo__corpo h2 {
@@ -1851,7 +1863,7 @@ a.canal:hover { color: var(--laranja); }
 }
 
 @media (max-width: 1024px) {
-  .artigo__wrap { grid-template-columns: 1fr; gap: 32px; }
+  .artigo__wrap { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .toc { position: static; order: -1; }
   .toc ol { display: flex; flex-wrap: wrap; gap: 4px 18px; border-left: none; }
   .toc a { border-left: none; margin-left: 0; padding: 4px 0; }
@@ -1922,6 +1934,9 @@ a.canal:hover { color: var(--laranja); }
 
   /* nav */
   .nav__links, .nav__cta, .nav__inner > .seletor-idioma { display: none; }
+
+  /* iOS amplia a página sozinho quando o campo tem fonte < 16px */
+  .campo input, .campo select, .campo textarea { font-size: 16px; }
   .nav__burger { display: flex; }
   .nav__logo img { height: 44px; }
 
@@ -1997,4 +2012,14 @@ a.canal:hover { color: var(--laranja); }
   .card-exportacao { padding: 32px 24px; }
   .card-numero { padding: 28px 24px; }
   .marquee__item { width: 220px; height: 150px; }
+}
+
+
+/* ---- Celular deitado: o menu precisa caber numa tela baixa ---- */
+@media (max-height: 500px) and (max-width: 900px) {
+  .nav__overlay { padding: 76px 32px 28px; gap: 0; }
+  .nav__overlay a { font-size: 19px; padding: 7px 0; }
+  .nav__overlay .nav__overlay-cta { margin-top: 12px; padding: 11px; font-size: 15px; }
+  .nav__overlay .seletor-idioma { margin-top: 8px; }
+  .nav__overlay .seletor-idioma a { font-size: 13px; padding: 6px 12px; }
 }
