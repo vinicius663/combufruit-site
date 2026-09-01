@@ -1,0 +1,13 @@
+# Cabeçalhos de segurança aplicados a todas as páginas.
+#
+# HSTS: diz ao navegador para só acessar este domínio por HTTPS pelo próximo
+# ano. Depois da primeira visita, ele nem tenta http — corta a requisição
+# insegura que hoje ainda acontece antes do redirecionamento.
+# includeSubDomains é seguro aqui: o único subdomínio ativo é o www, também
+# em HTTPS (verificado em 01/09/2026 — reavaliar antes de criar subdomínio novo).
+# preload só entra em vigor se o domínio for submetido em hstspreload.org.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
