@@ -1,6 +1,6 @@
 // Constantes e helpers compartilhados do site Combu Fruit.
 
-export const DOMINIO = 'https://www.combufruit.com.br';
+export const DOMINIO = 'https://combufruit.com.br';
 
 // Categorias oficiais do blog (nome exibido -> slug da URL + textos do hub da categoria)
 export const CATEGORIAS = [

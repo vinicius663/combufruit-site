@@ -23,4 +23,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.combufruit.com.br/sitemap.xml
+Sitemap: https://combufruit.com.br/sitemap.xml

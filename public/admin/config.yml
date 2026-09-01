@@ -14,7 +14,7 @@ backend:
 # permite teste local sem GitHub (proxy do CMS)
 local_backend: true
 
-site_url: https://www.combufruit.com.br
+site_url: https://combufruit.com.br
 locale: pt
 
 # onde as imagens enviadas pelo painel são gravadas / como aparecem na URL
