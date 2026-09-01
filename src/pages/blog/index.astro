@@ -80,10 +80,21 @@ const jsonld = [{
       </a>
     )}
 
-    <div class="grade-posts">
-      {demais.map((p, i) => <CardPost post={p} reveal={(i % 3) * 100} />)}
-      {breves.map((b, i) => <CardBreve item={b} reveal={((demais.length + i) % 3) * 100} />)}
-    </div>
+    {posts.length === 0 ? (
+      <div class="blog-vazio" data-reveal="0">
+        <h2>Os primeiros conteúdos vêm por aí</h2>
+        <p>Estamos preparando materiais sobre mercado do açaí, qualidade técnica e exportação — para quem compra polpa em escala. Enquanto isso, fale com o nosso time comercial.</p>
+        <div class="hero__ctas" style="justify-content:center">
+          <a href="/contato.html" class="btn btn--primario">Pedir cotação</a>
+          <a href="/produtos/" class="btn btn--contorno">Conhecer os produtos</a>
+        </div>
+      </div>
+    ) : (
+      <div class="grade-posts">
+        {demais.map((p, i) => <CardPost post={p} reveal={(i % 3) * 100} />)}
+        {breves.map((b, i) => <CardBreve item={b} reveal={((demais.length + i) % 3) * 100} />)}
+      </div>
+    )}
   </div>
 </section>
 

@@ -1,0 +1,97 @@
+---
+// Hub de materiais ricos, gerado a partir de src/content/materiais.
+// Cada arquivo da coleção vira um card; o destino pode ser uma landing page
+// do RD Station, um PDF do site ou uma página interna.
+import { getCollection } from 'astro:content';
+import BlogShell from '../../layouts/BlogShell.astro';
+import { DOMINIO } from '../../lib/site.mjs';
+
+const materiais = (await getCollection('materiais'))
+  .sort((a, b) => a.data.ordem - b.data.ordem);
+
+const jsonld = [{
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Materiais — Combu Fruit',
+  url: `${DOMINIO}/materiais/`,
+  inLanguage: 'pt-BR',
+  description: 'Materiais ricos da Combu Fruit: guias, e-books, catálogos e fichas técnicas sobre polpa de açaí B2B.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Combu Fruit',
+    logo: { '@type': 'ImageObject', url: `${DOMINIO}/assets/icons/icon-512.png` },
+  },
+}];
+---
+<BlogShell
+  titulo="Materiais — Combu Fruit"
+  descricao="Materiais ricos da Combu Fruit para quem compra polpa de açaí em escala: guias, e-books, catálogos e fichas técnicas para download."
+  canonical="/materiais/"
+  ogTitulo="Materiais — Combu Fruit"
+  ogDescricao="Guias, e-books e documentos técnicos sobre polpa de açaí B2B, para download."
+  jsonld={jsonld}
+>
+
+<!-- ===== Cabeçalho ===== -->
+<section class="blog-hero">
+  <div class="blog-hero__inner" data-reveal="0">
+    <h1>Conteúdo Combu Fruit</h1>
+    <p>Materiais ricos para quem compra polpa de açaí em escala: guias, e-books e documentos técnicos.</p>
+    <nav class="seletor-conteudo" aria-label="Tipo de conteúdo">
+      <a href="/blog/">Blog</a>
+      <a href="/materiais/" class="ativo" aria-current="page">Materiais</a>
+    </nav>
+  </div>
+</section>
+
+<!-- onda: roxo → creme -->
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" style="background:#37196C"><path fill="#F7F4EE" d="M0,50 C240,95 480,5 760,35 C1040,65 1240,20 1440,45 L1440,90 L0,90 Z"></path></svg>
+
+<!-- ===== Lista de materiais ===== -->
+<section class="blog-lista">
+  <div class="blog-lista__inner">
+    {materiais.length === 0 ? (
+      <div class="blog-vazio" data-reveal="0">
+        <h2>Materiais a caminho</h2>
+        <p>Estamos preparando guias e documentos para quem compra polpa de açaí em escala. Enquanto isso, fale com o nosso time comercial.</p>
+        <div class="hero__ctas" style="justify-content:center">
+          <a href="/contato.html" class="btn btn--primario">Pedir cotação</a>
+          <a href="/produtos/" class="btn btn--contorno">Conhecer os produtos</a>
+        </div>
+      </div>
+    ) : (
+      <div class="grade-posts">
+        {materiais.map((m, i) => {
+          const d = m.data;
+          const reveal = String((i % 3) * 100);
+          const capa = (
+            <div class="card-post__img" style={`background-image:url('${d.imagem}')`} role="img" aria-label={d.imagemAlt}></div>
+          );
+          return d.emBreve || !d.destino ? (
+            <div class="card card-post card-post--breve" data-reveal={reveal}>
+              {capa}
+              <div class="card-post__corpo">
+                <span class="tag-breve">Em breve</span>
+                <h3>{d.titulo}</h3>
+                <p>{d.descricao}</p>
+                <p class="post-meta">{d.tipo}</p>
+              </div>
+            </div>
+          ) : (
+            <a class="card card--hover card-post" href={d.destino} data-reveal={reveal}>
+              {capa}
+              <div class="card-post__corpo">
+                <span class="tag-categoria">{d.tipo}</span>
+                <h3>{d.titulo}</h3>
+                <p>{d.descricao}</p>
+                <p class="post-meta" style="color:#C85700;font-weight:600">{d.textoBotao} →</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</section>
+
+</BlogShell>

@@ -37,38 +37,9 @@ export function categoriaPorNome(nome) {
 }
 
 // Cards "Em breve" — pautas anunciadas antes de existirem como post.
-// Quando o post real de uma pauta for publicado, basta remover a entrada daqui.
-export const EM_BREVE = [
-  {
-    titulo: 'O mercado do açaí em 2026: safra, demanda e o que esperar dos preços',
-    texto: 'O panorama da safra paraense e os movimentos de preço que o comprador B2B precisa acompanhar.',
-    categoria: 'Mercado do Açaí',
-    img: '/assets/banco/b05.webp',
-    aria: 'Frutos de açaí',
-  },
-  {
-    titulo: 'Da ilha ao contêiner: como funciona a exportação de polpa congelada',
-    texto: 'Embalagens por país, documentação e cadeia de frio: o caminho do açaí até EUA, Europa e Ásia.',
-    categoria: 'Exportação',
-    img: '/assets/segmentos/importador.webp',
-    aria: 'Contêineres refrigerados no porto',
-  },
-  {
-    titulo: 'Ilha do Combu: por que a origem importa para quem compra em escala',
-    texto: 'Rastreabilidade, manejo e a relação com os ribeirinhos que sustenta o padrão do fruto.',
-    categoria: 'Amazônia & Origem',
-    img: '/assets/banco/b22.webp',
-    aria: 'Vista aérea da Ilha do Combu',
-  },
-  {
-    titulo: 'Como ler uma ficha técnica de polpa de açaí',
-    texto: 'Registro MAPA, tabela nutricional, microbiologia: o que verificar antes do primeiro pedido.',
-    categoria: 'Qualidade & Técnica',
-    img: '/assets/barra-12-molhada.webp',
-    imgContain: true,
-    aria: 'Embalagem de açaí 12%',
-  },
-];
+// Vazio por decisão: o blog só mostra conteúdo real. Para anunciar uma pauta
+// futura, acrescente aqui { titulo, texto, categoria, img, aria }.
+export const EM_BREVE = [];
 
 // "7 de julho de 2026" — sempre em UTC para a data do frontmatter não escorregar um dia
 const fmtData = new Intl.DateTimeFormat('pt-BR', {

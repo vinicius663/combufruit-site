@@ -28,4 +28,23 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+// Materiais ricos: e-books, guias e documentos. Cada arquivo em
+// src/content/materiais vira um card na página /materiais/.
+// O destino pode ser uma landing page externa (RD Station), um PDF do site
+// ou uma página interna.
+const materiais = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/materiais' }),
+  schema: z.object({
+    titulo: z.string(),
+    descricao: z.string(),
+    tipo: z.string(),
+    imagem: z.string(),
+    imagemAlt: z.string(),
+    destino: z.string().optional(),
+    textoBotao: z.string().default('Acessar material'),
+    emBreve: z.boolean().default(false),
+    ordem: z.number().default(99),
+  }),
+});
+
+export const collections = { posts, materiais };

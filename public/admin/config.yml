@@ -63,3 +63,29 @@ collections:
           - { label: "Resposta", name: "resposta", widget: "text" }
       - { label: "Rascunho (não publica)", name: "rascunho", widget: "boolean", default: false, hint: "Ligado = o post NÃO aparece no site, mesmo salvo." }
       - { label: "Conteúdo", name: "body", widget: "markdown", hint: "O artigo. Use Título 2 para as seções (viram o índice lateral) e Título 3 para subseções. Digite [[cta]] numa linha própria para inserir o box de 'Pedir cotação' no meio do texto." }
+
+  - name: materiais
+    label: "Materiais ricos"
+    label_singular: "Material"
+    folder: "src/content/materiais"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{titulo}} — {{tipo}}"
+    sortable_fields: [ordem, titulo]
+    editor:
+      preview: false
+    fields:
+      - { label: "Título", name: "titulo", widget: "string", hint: "Nome do material, como aparece no card." }
+      - { label: "Descrição", name: "descricao", widget: "text", hint: "1 ou 2 frases explicando o que a pessoa recebe." }
+      - label: "Tipo"
+        name: "tipo"
+        widget: "select"
+        options: ["E-book", "Guia", "Documentos técnicos", "Catálogo", "Planilha", "Webinar", "Checklist"]
+        hint: "Aparece como etiqueta no topo do card."
+      - { label: "Imagem do card", name: "imagem", widget: "image", hint: "Foto horizontal. Pode ser a capa do material ou uma foto do produto." }
+      - { label: "Descrição da imagem", name: "imagemAlt", widget: "string", hint: "Descreva a imagem em uma frase (acessibilidade e Google)." }
+      - { label: "Link do material", name: "destino", widget: "string", required: false, hint: "Cole aqui o endereço da landing page (RD Station) ou do arquivo. Deixe vazio para o material aparecer como 'Em breve'." }
+      - { label: "Texto do botão", name: "textoBotao", widget: "string", default: "Acessar material", required: false, hint: "Ex.: Baixar e-book, Acessar as fichas, Fazer download." }
+      - { label: "Em breve (sem link)", name: "emBreve", widget: "boolean", default: false, hint: "Ligado = o card aparece com a etiqueta 'Em breve' e não clica." }
+      - { label: "Ordem de exibição", name: "ordem", widget: "number", default: 99, value_type: "int", hint: "Menor número aparece primeiro." }
