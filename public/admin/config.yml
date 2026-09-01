@@ -8,7 +8,7 @@
 
 backend:
   name: github
-  repo: SUBSTITUIR-USUARIO/combufruit-site
+  repo: vinicius663/combufruit-site
   branch: main
 
 # permite teste local sem GitHub (proxy do CMS)

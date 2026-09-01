@@ -4,7 +4,7 @@ O projeto está pronto e testado localmente. Para o CMS funcionar em produção,
 faltam 4 passos que dependem de contas suas — nenhum envolve código. Faça na
 ordem. Qualquer dúvida, é só me chamar no Claude que eu te guio tela a tela.
 
-## Passo 1 — Criar o repositório no GitHub (~10 min)
+## Passo 1 — Criar o repositório no GitHub ✅ FEITO (01/09/2026)
 
 1. Crie uma conta em https://github.com (se ainda não tiver — a conta
    `vinicius663` já está configurada no seu computador);
@@ -15,7 +15,7 @@ ordem. Qualquer dúvida, é só me chamar no Claude que eu te guio tela a tela.
 3. No seu computador, no terminal, dentro da pasta `Combufruit/astro`:
 
 ```bash
-git remote add origin https://github.com/SEU-USUARIO/combufruit-site.git
+git remote add origin https://github.com/vinicius663/combufruit-site.git
 ```
 
 ```bash
@@ -49,9 +49,7 @@ O painel usa o login do GitHub. O Netlify faz a ponte:
 2. No Netlify: **Site configuration → Access & security → OAuth →
    Install provider → GitHub** → cole o Client ID e o Secret;
 3. No arquivo `public/admin/config.yml` deste projeto, troque a linha
-   `repo: SUBSTITUIR-USUARIO/combufruit-site` pelo caminho real
-   (ex.: `repo: vinicius663/combufruit-site`) — me peça que eu troco e faço
-   o push;
+   `repo:` — **já está ajustado** para `vinicius663/combufruit-site`;
 4. Acesse `https://SEU-SITE.netlify.app/admin/` e clique **Entrar com GitHub**.
 
 ## Passo 4 — Dar acesso à Tamires (~5 min)
