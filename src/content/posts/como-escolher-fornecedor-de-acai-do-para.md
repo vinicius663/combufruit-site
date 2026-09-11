@@ -1,25 +1,27 @@
 ---
-titulo: "Açaí do Pará: o que muda para o revendedor na escolha do fornecedor?"
-descricao: "A origem não garante qualidade sozinha. Veja os critérios técnicos — teor de sólidos, laudos, POP e logística — para escolher um fornecedor de açaí do Pará."
-categoria: "Qualidade & Técnica"
+titulo: 'Açaí do Pará: o que muda para o revendedor na escolha do fornecedor?'
+descricao: A origem não garante qualidade sozinha. Veja os critérios técnicos — teor de sólidos, laudos, POP e logística — para escolher um fornecedor de açaí do Pará.
+categoria: Qualidade & Técnica
 data: 2026-09-01
-imagem: "/assets/banco/b05.webp"
-imagemAlt: "Frutos de açaí roxos e maduros amontoados logo após a colheita no Pará."
-imagemLegenda: "A origem garante o potencial do fruto; o processamento define o produto que chega à sua linha."
+imagem: /assets/blog/#60047_[TOPO]_Fornecedor_de_acai.jpg
+imagemAlt: Frutos de açaí roxos e maduros amontoados logo após a colheita no Pará.
+imagemLegenda: A origem garante o potencial do fruto; o processamento define o produto que chega à sua linha.
+tituloSeo: ''
+tempoLeitura: ''
 resumo:
-  - "A **origem paraense** garante o potencial do fruto, mas quem determina o produto final é o processamento industrial."
-  - "**Teor de sólidos, carga microbiana e preservação de lipídios** separam dois fornecedores da mesma região."
-  - "Preço muito abaixo da média costuma esconder **excesso de água** ou fruto colhido fora do ponto de maturação."
-  - "Exija **laudos por lote, rastreabilidade e capacidade de fornecimento na entressafra** antes de fechar contrato."
+  - A **origem paraense** garante o potencial do fruto, mas quem determina o produto final é o processamento industrial.
+  - '**Teor de sólidos, carga microbiana e preservação de lipídios** separam dois fornecedores da mesma região.'
+  - Preço muito abaixo da média costuma esconder **excesso de água** ou fruto colhido fora do ponto de maturação.
+  - Exija **laudos por lote, rastreabilidade e capacidade de fornecimento na entressafra** antes de fechar contrato.
 faq:
-  - pergunta: "Todo açaí do Pará possui o mesmo padrão de qualidade?"
-    resposta: "Não. A origem é um fator importante, mas não garante sozinha um produto de excelência. O padrão final depende dos processos adotados pelo fabricante e do controle de qualidade aplicado em cada etapa da produção."
-  - pergunta: "Quais análises devem ser exigidas antes de fechar contrato?"
-    resposta: "Análise de extrato seco (sólidos totais), para validar se a porcentagem vendida é a entregue; acidez titulável e pH, que avaliam maturação e integridade do fruto; contagem microbiológica; e teor de lipídios, responsável pela cremosidade."
-  - pergunta: "Preço menor significa melhor negócio na compra de açaí?"
-    resposta: "Raramente. No mercado atacadista de polpa, preços muito abaixo da média costumam ocultar excesso de adição de água — o que baixa o teor de sólidos real — ou frutos colhidos fora do ponto de maturação ideal. O barato inicial vira perda de rendimento na fábrica ou devolução no foodservice."
-  - pergunta: "Como garantir o mesmo padrão de entrega durante a entressafra?"
-    resposta: "Fechando contrato com indústrias que tenham planta de processamento própria e capacidade de armazenamento em larga escala no Pará. Assim, a matéria-prima colhida no pico da safra é reservada com o mesmo padrão para atender a sua empresa nos meses de seca."
+  - pergunta: Todo açaí do Pará possui o mesmo padrão de qualidade?
+    resposta: Não. A origem é um fator importante, mas não garante sozinha um produto de excelência. O padrão final depende dos processos adotados pelo fabricante e do controle de qualidade aplicado em cada etapa da produção.
+  - pergunta: Quais análises devem ser exigidas antes de fechar contrato?
+    resposta: Análise de extrato seco (sólidos totais), para validar se a porcentagem vendida é a entregue; acidez titulável e pH, que avaliam maturação e integridade do fruto; contagem microbiológica; e teor de lipídios, responsável pela cremosidade.
+  - pergunta: Preço menor significa melhor negócio na compra de açaí?
+    resposta: Raramente. No mercado atacadista de polpa, preços muito abaixo da média costumam ocultar excesso de adição de água — o que baixa o teor de sólidos real — ou frutos colhidos fora do ponto de maturação ideal. O barato inicial vira perda de rendimento na fábrica ou devolução no foodservice.
+  - pergunta: Como garantir o mesmo padrão de entrega durante a entressafra?
+    resposta: Fechando contrato com indústrias que tenham planta de processamento própria e capacidade de armazenamento em larga escala no Pará. Assim, a matéria-prima colhida no pico da safra é reservada com o mesmo padrão para atender a sua empresa nos meses de seca.
 rascunho: false
 ---
 
