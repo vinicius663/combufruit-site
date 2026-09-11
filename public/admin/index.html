@@ -7,6 +7,28 @@
 <title>Painel de conteúdo — Combu Fruit</title>
 </head>
 <body>
+<script>
+  // O Sveltia usa Uint8Array.toBase64/fromBase64 para salvar e ler arquivos.
+  // Navegadores anteriores a 2025 não têm essas funções e o "Salvar" falha
+  // com "toBase64 is not a function" — este trecho as supre nesses casos.
+  if (!Uint8Array.prototype.toBase64) {
+    Uint8Array.prototype.toBase64 = function () {
+      var bin = '';
+      for (var i = 0; i < this.length; i += 0x8000) {
+        bin += String.fromCharCode.apply(null, this.subarray(i, i + 0x8000));
+      }
+      return btoa(bin);
+    };
+  }
+  if (!Uint8Array.fromBase64) {
+    Uint8Array.fromBase64 = function (s) {
+      var bin = atob(s);
+      var out = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+      return out;
+    };
+  }
+</script>
 <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
 </body>
 </html>
