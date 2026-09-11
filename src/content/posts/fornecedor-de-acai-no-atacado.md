@@ -1,27 +1,29 @@
 ---
-titulo: "Fornecedor de açaí no atacado: como escolher a indústria certa para garantir margem e estoque anual"
-descricao: "Preço por quilo não protege margem. Veja como avaliar estrutura, logística e capacidade de fornecimento antes de fechar com um fornecedor de açaí no atacado."
-categoria: "Mercado do Açaí"
+titulo: 'Fornecedor de açaí no atacado: como escolher a indústria certa para garantir margem e estoque anual'
+descricao: Preço por quilo não protege margem. Veja como avaliar estrutura, logística e capacidade de fornecimento antes de fechar com um fornecedor de açaí no atacado.
+categoria: Mercado do Açaí
 data: 2026-09-01
-imagem: "/assets/site/crescimento-camara-fria.webp"
-imagemAlt: "Câmara fria da Combu Fruit com sacos de polpa de açaí 12% e 14% empilhados até o teto."
-imagemLegenda: "Capacidade de estocagem é o que sustenta o fornecimento na entressafra."
+imagem: /assets/blog/#60047_[TOPO]_Fornecedor_de_acai.jpg
+imagemAlt: Câmara fria da Combu Fruit com sacos de polpa de açaí 12% e 14% empilhados até o teto.
+imagemLegenda: Capacidade de estocagem é o que sustenta o fornecimento na entressafra.
+tituloSeo: Tenha seu fornecedor de açaí no atacado
+tempoLeitura: ''
 resumo:
-  - "O preço da cotação só faz sentido junto com a **regularidade do abastecimento** ao longo do ano."
-  - "**Ruptura de estoque** é o custo invisível: produção parada, frete emergencial e reorganização de pedidos."
-  - "**Safra e entressafra** mudam a dinâmica de oferta — planejar a compra vale mais que economizar num pedido."
-  - "Avalie **estrutura industrial, capacidade de volume, condições comerciais e relação de longo prazo**."
+  - O preço da cotação só faz sentido junto com a **regularidade do abastecimento** ao longo do ano.
+  - '**Ruptura de estoque** é o custo invisível: produção parada, frete emergencial e reorganização de pedidos.'
+  - '**Safra e entressafra** mudam a dinâmica de oferta — planejar a compra vale mais que economizar num pedido.'
+  - Avalie **estrutura industrial, capacidade de volume, condições comerciais e relação de longo prazo**.
 faq:
-  - pergunta: "Qual a quantidade mínima para comprar açaí no atacado?"
-    resposta: "Na Combu Fruit, o pedido mínimo é de 1 tonelada. A operação é voltada ao mercado B2B e atende empresas que trabalham com volumes maiores de compra."
-  - pergunta: "Como funciona o prazo de entrega de um fornecedor de açaí no atacado?"
-    resposta: "O prazo varia de acordo com a região, o volume solicitado e as condições logísticas do pedido. A Combu Fruit possui Centros de Distribuição próprios no Rio de Janeiro e no Espírito Santo, além de atuação comercial em outras regiões do país."
-  - pergunta: "É possível fechar contrato de fornecimento anual de açaí?"
-    resposta: "A possibilidade de contrato depende das necessidades do cliente e das condições comerciais negociadas. Para empresas com demanda recorrente, essa modalidade pode ser avaliada como parte de uma estratégia de planejamento de compras e abastecimento."
-  - pergunta: "Qual a validade e a forma de armazenamento do açaí congelado?"
-    resposta: "A validade e as condições de armazenamento devem ser verificadas conforme as especificações do produto adquirido. Por se tratar de polpa congelada, é fundamental seguir as orientações de conservação indicadas pelo fabricante e garantir que a estrutura de armazenamento do comprador mantenha o produto nas condições recomendadas."
-  - pergunta: "Como negociar preço fixo com um fornecedor de açaí ao longo do ano?"
-    resposta: "A negociação depende de volume contratado, frequência de compra, período de fornecimento e condições comerciais. Um planejamento de compras de longo prazo facilita a negociação e reduz a dependência de compras emergenciais."
+  - pergunta: Qual a quantidade mínima para comprar açaí no atacado?
+    resposta: Na Combu Fruit, o pedido mínimo é de 1 tonelada. A operação é voltada ao mercado B2B e atende empresas que trabalham com volumes maiores de compra.
+  - pergunta: Como funciona o prazo de entrega de um fornecedor de açaí no atacado?
+    resposta: O prazo varia de acordo com a região, o volume solicitado e as condições logísticas do pedido. A Combu Fruit possui Centros de Distribuição próprios no Rio de Janeiro e no Espírito Santo, além de atuação comercial em outras regiões do país.
+  - pergunta: É possível fechar contrato de fornecimento anual de açaí?
+    resposta: A possibilidade de contrato depende das necessidades do cliente e das condições comerciais negociadas. Para empresas com demanda recorrente, essa modalidade pode ser avaliada como parte de uma estratégia de planejamento de compras e abastecimento.
+  - pergunta: Qual a validade e a forma de armazenamento do açaí congelado?
+    resposta: A validade e as condições de armazenamento devem ser verificadas conforme as especificações do produto adquirido. Por se tratar de polpa congelada, é fundamental seguir as orientações de conservação indicadas pelo fabricante e garantir que a estrutura de armazenamento do comprador mantenha o produto nas condições recomendadas.
+  - pergunta: Como negociar preço fixo com um fornecedor de açaí ao longo do ano?
+    resposta: A negociação depende de volume contratado, frequência de compra, período de fornecimento e condições comerciais. Um planejamento de compras de longo prazo facilita a negociação e reduz a dependência de compras emergenciais.
 rascunho: false
 ---
 
