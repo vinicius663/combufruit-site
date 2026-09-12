@@ -41,7 +41,7 @@ collections:
         widget: "select"
         options: ["Qualidade & Técnica", "Mercado do Açaí", "Exportação", "Amazônia & Origem"]
       - { label: "Data de publicação", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Imagem de destaque", name: "imagem", widget: "image", hint: "Foto horizontal, de preferência 1600 px ou mais de largura." }
+      - { label: "Imagem de destaque", name: "imagem", widget: "image", hint: "Foto horizontal, de preferência 1600 px ou mais de largura. Antes de enviar, renomeie o arquivo sem acentos e sem os símbolos # ? [ ] — eles quebram o endereço da imagem." }
       - { label: "Descrição da imagem (acessibilidade)", name: "imagemAlt", widget: "string", hint: "Descreva a foto em uma frase — é lido por leitores de tela e pelo Google." }
       - { label: "Legenda da imagem", name: "imagemLegenda", widget: "string", required: false, hint: "Opcional. Aparece abaixo da foto de destaque." }
       - { label: "Título para o Google (opcional)", name: "tituloSeo", widget: "string", required: false, hint: "Se vazio, usa o título do artigo + '— Blog Combu Fruit'." }
@@ -83,7 +83,7 @@ collections:
         widget: "select"
         options: ["E-book", "Guia", "Documentos técnicos", "Catálogo", "Planilha", "Webinar", "Checklist"]
         hint: "Aparece como etiqueta no topo do card."
-      - { label: "Imagem do card", name: "imagem", widget: "image", hint: "Foto horizontal. Pode ser a capa do material ou uma foto do produto." }
+      - { label: "Imagem do card", name: "imagem", widget: "image", hint: "Foto horizontal. Pode ser a capa do material ou uma foto do produto. Renomeie o arquivo sem acentos e sem os símbolos # ? [ ] antes de enviar." }
       - { label: "Descrição da imagem", name: "imagemAlt", widget: "string", hint: "Descreva a imagem em uma frase (acessibilidade e Google)." }
       - { label: "Link do material", name: "destino", widget: "string", required: false, hint: "Cole aqui o endereço da landing page (RD Station) ou do arquivo. Deixe vazio para o material aparecer como 'Em breve'." }
       - { label: "Texto do botão", name: "textoBotao", widget: "string", default: "Acessar material", required: false, hint: "Ex.: Baixar e-book, Acessar as fichas, Fazer download." }

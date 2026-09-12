@@ -3,7 +3,7 @@ titulo: 'Fornecedor de açaí no atacado: como escolher a indústria certa para 
 descricao: Preço por quilo não protege margem. Veja como avaliar estrutura, logística e capacidade de fornecimento antes de fechar com um fornecedor de açaí no atacado.
 categoria: Mercado do Açaí
 data: 2026-09-01
-imagem: /assets/blog/#60047_[TOPO]_Fornecedor_de_acai.jpg
+imagem: /assets/blog/fornecedor-de-acai-topo.jpg
 imagemAlt: Câmara fria da Combu Fruit com sacos de polpa de açaí 12% e 14% empilhados até o teto.
 imagemLegenda: Capacidade de estocagem é o que sustenta o fornecimento na entressafra.
 tituloSeo: Tenha seu fornecedor de açaí no atacado
