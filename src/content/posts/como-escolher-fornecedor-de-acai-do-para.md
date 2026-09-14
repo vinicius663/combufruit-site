@@ -3,7 +3,7 @@ titulo: 'Açaí do Pará: o que muda para o revendedor na escolha do fornecedor?
 descricao: A origem não garante qualidade sozinha. Veja os critérios técnicos — teor de sólidos, laudos, POP e logística — para escolher um fornecedor de açaí do Pará.
 categoria: Qualidade & Técnica
 data: 2026-09-01
-imagem: /assets/blog/fornecedor-de-acai-topo.jpg
+imagem: /assets/blog/acai-do-para.jpg
 imagemAlt: Frutos de açaí roxos e maduros amontoados logo após a colheita no Pará.
 imagemLegenda: A origem garante o potencial do fruto; o processamento define o produto que chega à sua linha.
 tituloSeo: ''
