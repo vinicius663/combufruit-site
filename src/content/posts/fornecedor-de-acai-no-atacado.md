@@ -3,7 +3,7 @@ titulo: 'Fornecedor de açaí no atacado: como escolher a indústria certa para 
 descricao: Preço por quilo não protege margem. Veja como avaliar estrutura, logística e capacidade de fornecimento antes de fechar com um fornecedor de açaí no atacado.
 categoria: Mercado do Açaí
 data: 2026-09-01
-imagem: /assets/blog/marcas-de-acai.jpg
+imagem: /assets/blog/fornecedor-de-acai-topo.jpg
 imagemAlt: Câmara fria da Combu Fruit com sacos de polpa de açaí 12% e 14% empilhados até o teto.
 imagemLegenda: Capacidade de estocagem é o que sustenta o fornecimento na entressafra.
 tituloSeo: Tenha seu fornecedor de açaí no atacado
@@ -202,9 +202,9 @@ Esses diferenciais contribuem para uma operação mais estruturada e adequada à
 
 O [portfólio da Combu Fruit](/produtos-nacional.html) inclui açaí com 8%, 12% e 14% de sólidos totais:
 
-* **[Açaí Combu Fruit 8%](/produtos-nacional.html#acai-8)**: direcionado a aplicações que priorizam rendimento e competitividade;
-* **[Açaí Combu Fruit 12%](/produtos-nacional.html#acai-12)**: oferece equilíbrio entre textura e rendimento;
-* **[Açaí Combu Fruit 14%](/produtos-nacional.html#acai-14)**: possui maior concentração de sólidos e atende aplicações que buscam intensidade de sabor e estrutura.
+* [**Açaí Combu Fruit 8%**](/produtos-nacional.html#acai-8): direcionado a aplicações que priorizam rendimento e competitividade;
+* [**Açaí Combu Fruit 12%**](/produtos-nacional.html#acai-12): oferece equilíbrio entre textura e rendimento;
+* [**Açaí Combu Fruit 14%**](/produtos-nacional.html#acai-14): possui maior concentração de sólidos e atende aplicações que buscam intensidade de sabor e estrutura.
 
 ### Controle de qualidade
 
