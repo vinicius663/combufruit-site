@@ -2,7 +2,7 @@
 titulo: 'Combu Fruit: da origem Amazônica à alta performance logística no mercado de açaí'
 descricao: Confira, neste artigo, a história e atuação da Combu Fruit como produtora de polpa de açaí no Brasil.
 categoria: Mercado do Açaí
-data: 2026-09-14
+data: 2026-09-01
 imagem: /assets/blog/combu-fruit.jpg
 imagemAlt: Pessoa segurando embalagem de polpa de açaí Combu Fruit
 imagemLegenda: ''
