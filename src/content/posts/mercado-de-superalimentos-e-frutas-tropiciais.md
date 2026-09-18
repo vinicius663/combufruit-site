@@ -2,7 +2,7 @@
 titulo: 'Do Brasil para o mundo: o crescimento do mercado de superalimentos e frutas tropicais'
 descricao: Entenda por que o açaí e outras frutas tropicais ganharam espaço no mercado internacional e o que é necessário para atender a essa demanda em escala.
 categoria: Amazônia & Origem
-data: 2026-09-17
+data: 2026-09-14
 imagem: /assets/blog/superalimentos-e-frutas-tropicais.jpg
 imagemAlt: Açaí Combu Fruit em cesta contendo matéria-prima recém-colhida
 imagemLegenda: ''
