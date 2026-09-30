@@ -337,42 +337,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label class="campo"><span>Correo electrónico <span class="obrigatorio" aria-hidden="true">*</span></span>
           <input name="email" type="email" required placeholder="usted@empresa.com" autocomplete="email">
         </label>
+        <label class="campo"><span>Teléfono <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <input name="telefone" type="tel" required placeholder="+34 600 000 000" autocomplete="tel" inputmode="tel" maxlength="20">
+        </label>
+        <label class="campo"><span>ID fiscal <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <input name="cnpj" required placeholder="CNPJ, NIF, RUC…" maxlength="30">
+        </label>
         <label class="campo">Empresa
           <input name="empresa" placeholder="Nombre de la empresa" autocomplete="organization">
         </label>
-        <label class="campo">Teléfono
-          <input name="telefone" type="tel" placeholder="+34 600 000 000" autocomplete="tel" inputmode="tel" maxlength="20">
+        <label class="campo"><span>Volumen estimado <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <select name="volume" required>
+            <option value="" selected>Seleccione…</option>
+            <option value="1 a 5 toneladas">1 a 5 toneladas</option>
+            <option value="6 a 20 toneladas">6 a 20 toneladas</option>
+            <option value="21 a 50 toneladas">21 a 50 toneladas</option>
+            <option value="Mais de 50 toneladas">Más de 50 toneladas</option>
+          </select>
         </label>
         <label class="campo">Tipo de negocio
           <select name="tipo">
             <option value="" selected>Seleccione…</option>
             <option value="Indústria">Industria</option>
             <option value="Distribuidor">Distribuidor</option>
-            <option value="Food service">Food service</option>
+            <option value="Food Service">Food Service</option>
             <option value="Importador">Importador</option>
-            <option value="Outro">Otro</option>
+            <option value="Outros">Otros</option>
           </select>
         </label>
         <label class="campo">Asunto
           <select name="assunto">
             <option value="" selected>Seleccione…</option>
-            <option value="Cotação de fornecimento">Cotización de suministro</option>
-            <option value="Compra programada">Compra Programada</option>
-            <option value="Portfólio e catálogo técnico">Portafolio y catálogo técnico</option>
+            <option value="Cotação de Fornecimento">Cotización de suministro</option>
+            <option value="Compra Programada">Compra Programada</option>
+            <option value="Portfólio e Catálogo Técnico">Portafolio y catálogo técnico</option>
             <option value="Exportação">Exportación</option>
-            <option value="Private label">Private label (marca propia)</option>
-            <option value="RH / Enviar currículo">RR. HH. / Enviar currículum</option>
-            <option value="Outro assunto">Otro asunto</option>
-          </select>
-        </label>
-        <label class="campo campo--linha">Volumen mensual estimado
-          <select name="volume">
-            <option value="" selected>Seleccione…</option>
-            <option value="1 a 5 toneladas">1 a 5 toneladas</option>
-            <option value="5 a 20 toneladas">5 a 20 toneladas</option>
-            <option value="20 a 50 toneladas">20 a 50 toneladas</option>
-            <option value="Mais de 50 toneladas">Más de 50 toneladas</option>
-            <option value="Ainda não sei">Aún no lo sé</option>
+            <option value="Private Label">Private label (marca propia)</option>
           </select>
         </label>
         <label class="campo campo--linha">Mensaje

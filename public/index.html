@@ -217,7 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="chip chip--escuro">Acima de 10 carretas</span>
         </div>
       </div>
-      <a href="#contato" class="btn btn--primario" data-assunto="Compra programada">Solicite sua compra programada</a>
+      <a href="#contato" class="btn btn--primario" data-assunto="Compra Programada">Solicite sua compra programada</a>
     </div>
 
     <div class="grade-cards">
@@ -467,42 +467,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label class="campo"><span>E-mail <span class="obrigatorio" aria-hidden="true">*</span></span>
           <input name="email" type="email" required placeholder="voce@empresa.com.br" autocomplete="email">
         </label>
+        <label class="campo"><span>Telefone <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <input name="telefone" type="tel" required placeholder="+55 (00) 00000-0000" autocomplete="tel" inputmode="tel" maxlength="20">
+        </label>
+        <label class="campo"><span>CNPJ <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <input name="cnpj" required placeholder="00.000.000/0000-00" inputmode="numeric" maxlength="18" data-mascara="cnpj">
+        </label>
         <label class="campo">Empresa
           <input name="empresa" placeholder="Nome da empresa" autocomplete="organization">
         </label>
-        <label class="campo">Telefone
-          <input name="telefone" type="tel" placeholder="+55 (00) 00000-0000" autocomplete="tel" inputmode="tel" maxlength="20">
+        <label class="campo"><span>Volume estimado <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <select name="volume" required>
+            <option value="" selected>Selecione…</option>
+            <option>1 a 5 toneladas</option>
+            <option>6 a 20 toneladas</option>
+            <option>21 a 50 toneladas</option>
+            <option>Mais de 50 toneladas</option>
+          </select>
         </label>
         <label class="campo">Tipo de negócio
           <select name="tipo">
             <option value="" selected>Selecione…</option>
             <option>Indústria</option>
             <option>Distribuidor</option>
-            <option>Food service</option>
+            <option>Food Service</option>
             <option>Importador</option>
-            <option>Outro</option>
+            <option>Outros</option>
           </select>
         </label>
         <label class="campo">Assunto
           <select name="assunto">
             <option value="" selected>Selecione…</option>
-            <option>Cotação de fornecimento</option>
-            <option>Compra programada</option>
-            <option>Portfólio e catálogo técnico</option>
+            <option>Cotação de Fornecimento</option>
+            <option>Compra Programada</option>
+            <option>Portfólio e Catálogo Técnico</option>
             <option>Exportação</option>
-            <option>Private label</option>
-            <option>RH / Enviar currículo</option>
-            <option>Outro assunto</option>
-          </select>
-        </label>
-        <label class="campo campo--linha">Volume mensal estimado
-          <select name="volume">
-            <option value="" selected>Selecione…</option>
-            <option>1 a 5 toneladas</option>
-            <option>5 a 20 toneladas</option>
-            <option>20 a 50 toneladas</option>
-            <option>Mais de 50 toneladas</option>
-            <option>Ainda não sei</option>
+            <option>Private Label</option>
           </select>
         </label>
         <label class="campo campo--linha">Mensagem

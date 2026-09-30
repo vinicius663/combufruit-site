@@ -374,7 +374,7 @@
      e levamos o visitante para a página de agradecimento. */
   // mensagens do formulário e página de agradecimento por idioma (var "idioma" definida no topo)
   var TXT = {
-    pt: { ddi: 'Informe o número completo com DDI (ex.: +1 415 555 0100).', br: 'Informe DDD + número (10 ou 11 dígitos).', enviando: 'Enviando…', obrigado: '/contato-agradecimento/' },
+    pt: { ddi: 'Informe o número completo com DDI (ex.: +1 415 555 0100).', br: 'Informe DDD + número (10 ou 11 dígitos).', cnpj: 'Informe os 14 dígitos do CNPJ.', enviando: 'Enviando…', obrigado: '/contato-agradecimento/' },
     en: { ddi: 'Enter the full number with country code (e.g., +1 415 555 0100).', br: 'Enter area code + number (10 or 11 digits).', enviando: 'Sending…', obrigado: '/en/thank-you/' },
     es: { ddi: 'Informe el número completo con código de país (ej.: +1 415 555 0100).', br: 'Informe el código de área + número (10 u 11 dígitos).', enviando: 'Enviando…', obrigado: '/es/gracias/' }
   };
@@ -403,6 +403,21 @@
         if (n.length > corte) f += '-' + n.slice(corte);
         tel.value = f;
         tel.setCustomValidity(f === '' || n.length === 10 || n.length === 11 ? '' : txt.br);
+      });
+    }
+
+    // máscara de CNPJ (só no formulário em português): "00.000.000/0000-00", exige 14 dígitos
+    var cnpj = form.querySelector('input[data-mascara="cnpj"]');
+    if (cnpj) {
+      cnpj.addEventListener('input', function () {
+        var n = cnpj.value.replace(/\D/g, '').slice(0, 14);
+        var f = n.slice(0, 2);
+        if (n.length > 2) f += '.' + n.slice(2, 5);
+        if (n.length > 5) f += '.' + n.slice(5, 8);
+        if (n.length > 8) f += '/' + n.slice(8, 12);
+        if (n.length > 12) f += '-' + n.slice(12);
+        cnpj.value = f;
+        cnpj.setCustomValidity(n.length === 0 || n.length === 14 ? '' : txt.cnpj);
       });
     }
 

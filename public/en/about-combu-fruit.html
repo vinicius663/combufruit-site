@@ -337,42 +337,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label class="campo"><span>Email <span class="obrigatorio" aria-hidden="true">*</span></span>
           <input name="email" type="email" required placeholder="you@company.com" autocomplete="email">
         </label>
+        <label class="campo"><span>Phone <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <input name="telefone" type="tel" required placeholder="+1 415 555 0100" autocomplete="tel" inputmode="tel" maxlength="20">
+        </label>
+        <label class="campo"><span>Tax ID <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <input name="cnpj" required placeholder="CNPJ, VAT, EIN…" maxlength="30">
+        </label>
         <label class="campo">Company
           <input name="empresa" placeholder="Company name" autocomplete="organization">
         </label>
-        <label class="campo">Phone
-          <input name="telefone" type="tel" placeholder="+1 415 555 0100" autocomplete="tel" inputmode="tel" maxlength="20">
+        <label class="campo"><span>Estimated volume <span class="obrigatorio" aria-hidden="true">*</span></span>
+          <select name="volume" required>
+            <option value="" selected>Select…</option>
+            <option value="1 a 5 toneladas">1 to 5 tonnes</option>
+            <option value="6 a 20 toneladas">6 to 20 tonnes</option>
+            <option value="21 a 50 toneladas">21 to 50 tonnes</option>
+            <option value="Mais de 50 toneladas">More than 50 tonnes</option>
+          </select>
         </label>
         <label class="campo">Type of business
           <select name="tipo">
             <option value="" selected>Select…</option>
             <option value="Indústria">Industry</option>
             <option value="Distribuidor">Distributor</option>
-            <option value="Food service">Food service</option>
+            <option value="Food Service">Food Service</option>
             <option value="Importador">Importer</option>
-            <option value="Outro">Other</option>
+            <option value="Outros">Other</option>
           </select>
         </label>
         <label class="campo">Subject
           <select name="assunto">
             <option value="" selected>Select…</option>
-            <option value="Cotação de fornecimento">Supply quote</option>
-            <option value="Compra programada">Planned purchasing</option>
-            <option value="Portfólio e catálogo técnico">Portfolio and technical catalog</option>
+            <option value="Cotação de Fornecimento">Supply quote</option>
+            <option value="Compra Programada">Planned purchasing</option>
+            <option value="Portfólio e Catálogo Técnico">Portfolio and technical catalog</option>
             <option value="Exportação">Export</option>
-            <option value="Private label">Private label</option>
-            <option value="RH / Enviar currículo">HR / Send résumé</option>
-            <option value="Outro assunto">Other subject</option>
-          </select>
-        </label>
-        <label class="campo campo--linha">Estimated monthly volume
-          <select name="volume">
-            <option value="" selected>Select…</option>
-            <option value="1 a 5 toneladas">1 to 5 tonnes</option>
-            <option value="5 a 20 toneladas">5 to 20 tonnes</option>
-            <option value="20 a 50 toneladas">20 to 50 tonnes</option>
-            <option value="Mais de 50 toneladas">More than 50 tonnes</option>
-            <option value="Ainda não sei">Not sure yet</option>
+            <option value="Private Label">Private label</option>
           </select>
         </label>
         <label class="campo campo--linha">Message
