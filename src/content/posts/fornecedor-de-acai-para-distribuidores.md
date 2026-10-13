@@ -2,7 +2,7 @@
 titulo: 'Fornecedor de açaí para distribuidores: o que avaliar antes de escolher'
 descricao: Confira, neste artigo, todos os pontos que você precisa avaliar antes de escolher seu fornecedor de açaí para distribuição.
 categoria: Mercado do Açaí
-data: 2026-09-08
+data: 2026-10-08
 imagem: /assets/blog/acai-para-distribuidores.jpg
 imagemAlt: Análise técnica de açaí por fornecedor para distrobuidores
 imagemLegenda: ''
