@@ -1110,6 +1110,9 @@ a.canal:hover { color: var(--laranja); }
 .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--laranja); }
 .campo input:focus-visible, .campo select:focus-visible, .campo textarea:focus-visible { outline: 2px solid var(--laranja); outline-offset: 2px; }
 .obrigatorio { color: var(--laranja); font-weight: 700; }
+.campo-aviso { display: block; margin: 6px 0 0; font-size: 13px; font-weight: 600; line-height: 1.45; color: #B3261E; }
+.campo-aviso[hidden] { display: none; }
+.campo select.campo--invalido { border-color: #B3261E; }
 .form-nota { grid-column: 1 / -1; margin: 2px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--corpo-claro); }
 .form-grid .btn { grid-column: 1 / -1; width: 100%; padding: 16px; }
 .form-sucesso {

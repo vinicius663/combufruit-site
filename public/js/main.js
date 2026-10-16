@@ -374,9 +374,9 @@
      e levamos o visitante para a página de agradecimento. */
   // mensagens do formulário e página de agradecimento por idioma (var "idioma" definida no topo)
   var TXT = {
-    pt: { ddi: 'Informe o número completo com DDI (ex.: +1 415 555 0100).', br: 'Informe DDD + número (10 ou 11 dígitos).', cnpj: 'Informe os 14 dígitos do CNPJ.', enviando: 'Enviando…', obrigado: '/contato-agradecimento/' },
-    en: { ddi: 'Enter the full number with country code (e.g., +1 415 555 0100).', br: 'Enter area code + number (10 or 11 digits).', enviando: 'Sending…', obrigado: '/en/thank-you/' },
-    es: { ddi: 'Informe el número completo con código de país (ej.: +1 415 555 0100).', br: 'Informe el código de área + número (10 u 11 dígitos).', enviando: 'Enviando…', obrigado: '/es/gracias/' }
+    pt: { ddi: 'Informe o número completo com DDI (ex.: +1 415 555 0100).', br: 'Informe DDD + número (10 ou 11 dígitos).', cnpj: 'Informe os 14 dígitos do CNPJ.', minimo: 'A Combu Fruit só atende pedidos acima de 1 tonelada, caso tenha preenchido de forma incorreta, preencha novamente o formulário.', enviando: 'Enviando…', obrigado: '/contato-agradecimento/' },
+    en: { ddi: 'Enter the full number with country code (e.g., +1 415 555 0100).', br: 'Enter area code + number (10 or 11 digits).', minimo: 'Combu Fruit only serves orders above 1 tonne. If you filled this in by mistake, please fill out the form again.', enviando: 'Sending…', obrigado: '/en/thank-you/' },
+    es: { ddi: 'Informe el número completo con código de país (ej.: +1 415 555 0100).', br: 'Informe el código de área + número (10 u 11 dígitos).', minimo: 'Combu Fruit solo atiende pedidos superiores a 1 tonelada. Si completó este campo por error, complete nuevamente el formulario.', enviando: 'Enviando…', obrigado: '/es/gracias/' }
   };
   var txt = TXT[idioma] || TXT.pt;
 
@@ -421,8 +421,29 @@
       });
     }
 
+    // pedido mínimo: "Menos de 1 tonelada" bloqueia o envio (validação nativa impede o submit,
+    // então o RD Station não registra a conversão) e mostra o aviso abaixo do campo
+    var volume = form.querySelector('select[name="volume"]');
+    if (volume) {
+      var aviso = document.createElement('span');
+      aviso.className = 'campo-aviso';
+      aviso.setAttribute('role', 'alert');
+      aviso.hidden = true;
+      aviso.textContent = txt.minimo;
+      volume.insertAdjacentElement('afterend', aviso);
+      var checarMinimo = function () {
+        var abaixo = volume.value === 'Menos de 1 tonelada';
+        volume.setCustomValidity(abaixo ? txt.minimo : '');
+        volume.classList.toggle('campo--invalido', abaixo);
+        aviso.hidden = !abaixo;
+      };
+      volume.addEventListener('change', checarMinimo);
+      checarMinimo();
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!form.checkValidity()) return;
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = txt.enviando; }
       setTimeout(function () { window.location.href = txt.obrigado; }, 700);
